@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import gsap, { Expo, Back } from 'gsap';
+
 import './App.css'
 
 function App() {
@@ -236,6 +238,9 @@ function App() {
     } else {
       showName()
     }
+
+    // animation
+    addAnimation()
   }
 
   function showName(name="") {
@@ -246,6 +251,28 @@ function App() {
 
   function getRandomNumber() {
     return Math.floor(Math.random() * 100)
+  }
+
+  function addAnimation() {
+    gsap.to(".btn", {
+      scaleY: 1.6,
+      duration: 0.8,
+      ease: Expo.easeOut
+    })
+    gsap.to(".btn", {
+      scaleX: 1.6,
+      scaleY: 1,
+      duration: 0.8,
+      delay: 0.1,
+      ease: Back.easeOut,
+    })
+    gsap.to(".btn", {
+      scaleX: 1,
+      scaleY: 1,
+      duration: .8,
+      delay: 0.3,
+      ease: Back.easeOut,
+    })
   }
 
   return (
@@ -273,7 +300,7 @@ function App() {
             <label htmlFor="suffix" className='text-white font-medium'>Add Suffix</label>
           </div>
         </div>
-        <button className='bg-red-700 text-white p-2 w-full rounded mt-3 hover:bg-red-500 relative after:content-[""] after:absolute after:w-6/12 after:h-2 after:bg-red-400 after:left-1/2 after:-translate-x-1/2 after:-bottom-4 after:opacity-25 after:rounded-full'>
+        <button className='btn block bg-red-700 text-white px-3 py-2 mx-auto rounded mt-6 hover:bg-red-500 relative after:content-[""] after:absolute after:w-6/12 after:h-2 after:bg-red-400 after:left-1/2 after:-translate-x-1/2 after:-bottom-4 after:opacity-25 after:rounded-full'>
           Generate Now
         </button>
       </form>
